@@ -1,0 +1,5 @@
+<h1><%= t('notebooks.edit_title', default: 'Editar Notebook') %></h1>
+
+<%= render 'form', notebook: @notebook %>
+
+<%= link_to t('helpers.back', default: 'Voltar'), notebooks_path %>

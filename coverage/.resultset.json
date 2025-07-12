@@ -1,6 +1,75 @@
 {
   "RSpec": {
-    "coverage": {},
-    "timestamp": 1752261119
+    "coverage": {
+      "/home/eduardo/tramps/noteTrack/app/helpers/notebooks_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/eduardo/tramps/noteTrack/app/models/notebook.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/eduardo/tramps/noteTrack/app/controllers/notebooks_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
+          null,
+          2,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          2,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          6,
+          null,
+          null,
+          1,
+          4,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1752278141
   }
 }
