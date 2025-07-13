@@ -1,0 +1,11 @@
+<% content_for :title, "New client" %>
+
+<h1>Novo cliente</h1>
+
+<%= render "form", client: @client %>
+
+<br>
+
+<div>
+  <%= link_to "Voltar", clients_path %>
+</div>
