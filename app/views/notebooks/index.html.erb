@@ -1,0 +1,4 @@
+<h1><%= t('notebooks.index_title', default: 'Lista de Notebooks') %></h1>
+<%= link_to t('notebooks.new', default: 'Novo Notebook'), new_notebook_path %>
+
+<%= render 'notebooks_table' %>

@@ -1,0 +1,63 @@
+<%= form_with(model: notebook, local: true, data: { turbo: false }) do |form| %>
+  <% if notebook.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t('notebooks.errors.title', count: notebook.errors.count) %></h2>
+      <ul>
+        <% notebook.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :equipment_id %>
+    <%= form.text_field :equipment_id %>
+  </div>
+
+  <div>
+    <%= form.label :brand %>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div>
+    <%= form.label :model %>
+    <%= form.text_field :model %>
+  </div>
+
+  <div>
+    <%= form.label :asset_number %>
+    <%= form.text_field :asset_number %>
+  </div>
+
+  <div>
+    <%= form.label :serial_number %>
+    <%= form.text_field :serial_number %>
+  </div>
+
+  <div>
+    <%= form.label :purchase_date %>
+    <%= form.date_select :purchase_date %>
+  </div>
+
+  <div>
+    <%= form.label :manufacture_date %>
+    <%= form.date_select :manufacture_date %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </div>
+
+  <% if action_name == 'edit' %>
+    <div>
+      <%= form.label :state %>
+      <%= form.select :state, Notebook.states.keys.map { |s| [s.humanize, s] } %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,67 @@
+pt-BR:
+  notebooks:
+    created: "Notebook cadastrado com sucesso."
+    updated: "Notebook atualizado com sucesso."
+    deleted: "Notebook excluído com sucesso."
+    errors:
+      title: "%{count} erro(s) impediram o notebook de ser salvo:"
+  activerecord:
+    models:
+      notebook: "Notebook"
+    attributes:
+      notebook:
+        equipment_id: "Identificação"
+        brand: "Marca"
+        model: "Modelo"
+        asset_number: "Patrimônio"
+        serial_number: "Número de série"
+        purchase_date: "Data de compra"
+        manufacture_date: "Data de fabricação"
+        description: "Descrição"
+        state: "Status"
+    errors:
+      models:
+        notebook:
+          attributes:
+            equipment_id:
+              blank: "não pode ficar em branco"
+              taken: "já está em uso"
+            brand:
+              blank: "não pode ficar em branco"
+            model:
+              blank: "não pode ficar em branco"
+            asset_number:
+              blank: "não pode ficar em branco"
+              taken: "já está em uso"
+            serial_number:
+              blank: "não pode ficar em branco"
+              taken: "já está em uso"
+            purchase_date:
+              blank: "não pode ficar em branco"
+            manufacture_date:
+              blank: "não pode ficar em branco"
+  date:
+    order:
+      - :day
+      - :month
+      - :year
+    month_names:
+      - ~
+      - Janeiro
+      - Fevereiro
+      - Março
+      - Abril
+      - Maio
+      - Junho
+      - Julho
+      - Agosto
+      - Setembro
+      - Outubro
+      - Novembro
+      - Dezembro
+  errors:
+    messages:
+      blank: "não pode ficar em branco"
+      taken: "já está em uso"
+      too_short: "é muito curto (mínimo %{count} caracteres)"
+      too_long: "é muito longo (máximo %{count} caracteres)"
