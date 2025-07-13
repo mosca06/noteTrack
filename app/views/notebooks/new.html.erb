@@ -1,5 +1,5 @@
-<h1>Novo Notebook</h1>
+<h1><%= t('notebooks.new_title', default: 'Novo Notebook') %></h1>
 
 <%= render 'form', notebook: @notebook %>
 
-<%= link_to 'Voltar', notebooks_path %>
+<%= link_to t('helpers.back', default: 'Voltar'), notebooks_path %>

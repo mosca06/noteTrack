@@ -7,6 +7,6 @@
   <td>
     <%= link_to t('notebooks.view', default: 'Ver'), notebook_path(notebook) %> |
     <%= link_to t('notebooks.edit', default: 'Editar'), edit_notebook_path(notebook) %> |
-    <%= link_to t('notebooks.delete', default: 'Excluir'), notebook_path(notebook), method: :delete, data: { confirm: t('notebooks.confirm_delete', default: 'Tem certeza?') } %>
+    <%= link_to t('notebooks.delete', default: 'Excluir'),  notebook_path(notebook), data: { turbo_method: :delete, turbo_confirm: t('notebooks.confirm_delete', default: 'Tem certeza?') } %>  
   </td>
 </tr>
