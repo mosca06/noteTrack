@@ -1,17 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: green; font-weight: bold; padding: 10px 0;"><%= notice %></p>
 
 <% content_for :title, "Clientes" %>
 
-<h1>Clientes</h1>
-<%= link_to "Novo cliente", new_client_path %>
+<h1 style="margin-bottom: 20px; font-family: Arial, sans-serif;">Clientes</h1>
 
-<div id="clients">
+<%= link_to "Novo cliente", new_client_path, 
+    style: "display: inline-block; margin-bottom: 20px; background-color: #28a745; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-weight: bold;" %>
+
+<div id="clients" style="display: flex; flex-wrap: wrap; gap: 20px;">
   <% @clients.each do |client| %>
-    <%= render client %>
-    <p>
-      <%= link_to "Ver", client %>
-    </p>
+    <div style="border: 1px solid #ccc; padding: 15px; border-radius: 6px; width: 250px; box-shadow: 2px 2px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+      <p><strong>Nome:</strong> <%= client.name %></p>
+      <p><strong>Setor:</strong> <%= client.sector %></p>
+      <p><strong>Status:</strong> <%= client.status.humanize %></p>
+      <p><%= link_to "Ver detalhes", client, style: "color: #007bff; text-decoration: none;" %></p>
+    </div>
   <% end %>
 </div>
-
-

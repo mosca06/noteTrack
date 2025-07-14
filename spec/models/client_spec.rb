@@ -9,6 +9,10 @@ RSpec.describe Client, type: :model do
   end
 
   describe 'enums' do
-    it { is_expected.to define_enum_for(:state).with_values(disponível: 0, emprestado: 1, indisponível: 2) }
+    it {
+      is_expected.to define_enum_for(:status).with_values(
+        { sem_notebook: 0, utilizando_notebook: 1 }
+      )
+    }
   end
 end

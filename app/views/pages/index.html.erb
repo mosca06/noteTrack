@@ -1,6 +1,10 @@
-<h1>Sistema de Gerenciamento</h1>
+<h1 style="font-family: Arial, sans-serif; margin-bottom: 15px;">Sistema de Gerenciamento</h1>
 
-<ul>
-  <li><%= link_to "Notebooks", notebooks_path %></li>
-  <li><%= link_to "Clientes", clients_path %></li>
+<ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px; background-color: #333; border-radius: 6px;">
+  <li>
+    <%= link_to "Notebooks", notebooks_path, style: "color: white; text-decoration: none; padding: 10px 15px; display: block;" %>
+  </li>
+  <li>
+    <%= link_to "Clientes", clients_path, style: "color: white; text-decoration: none; padding: 10px 15px; display: block;" %>
+  </li>
 </ul>

@@ -15,14 +15,77 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= link_to "Clientes", clients_path %>
-    <%= link_to "Notebooks", notebooks_path %>
+
+    <style>
+      /* Navbar fixa */
+      nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 50px;
+        background-color: #222;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        font-family: Arial, sans-serif;
+        z-index: 1000;
+      }
+
+      nav .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 15px;
+        font-weight: bold;
+      }
+
+      nav .nav-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Espaço para o conteúdo não ficar atrás da navbar */
+      body {
+        margin: 0;
+        padding-top: 50px; /* igual à altura do nav */
+        font-family: Arial, sans-serif;
+      }
+
+      /* Flash messages */
+      .flash {
+        padding: 10px 20px;
+        margin: 10px auto;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 5px;
+      }
+
+      .flash.notice {
+        background-color: #e0ffe0;
+        color: #006600;
+      }
+
+      .flash.alert {
+        background-color: #ffe0e0;
+        color: #990000;
+      }
+    </style>
   </head>
 
   <body>
+    <nav>
+      <div class="logo">
+        <%= link_to "Note Track", root_path, style: "color: white; text-decoration: none; font-weight: bold;" %>
+      </div>
+      <div class="nav-links">
+        <%= link_to "Clientes", clients_path %>
+        <%= link_to "Notebooks", notebooks_path %>
+      </div>
+    </nav>
+
     <% flash.each do |key, message| %>
       <div class="flash <%= key %>"><%= message %></div>
     <% end %>
+
     <%= yield %>
   </body>
 </html>

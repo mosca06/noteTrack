@@ -16,12 +16,13 @@ RSpec.describe '/clients', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Client. As you add validations to Client, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
-  end
+  let(:valid_attributes) { attributes_for(:client) }
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      name: '',
+      sector: ''
+    }
   end
 
   describe 'GET /index' do
@@ -86,14 +87,19 @@ RSpec.describe '/clients', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          name: 'newname',
+          sector: 'newsector'
+        }
       end
 
       it 'updates the requested client' do
         client = Client.create! valid_attributes
         patch client_url(client), params: { client: new_attributes }
         client.reload
-        skip('Add assertions for updated state')
+
+        expect(client.name).to eq('newname')
+        expect(client.sector).to eq('newsector')
       end
 
       it 'redirects to the client' do

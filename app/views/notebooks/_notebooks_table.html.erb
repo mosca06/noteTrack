@@ -1,10 +1,18 @@
-<table>
+<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
   <thead>
-    <tr>
-      <th><%= t('activerecord.attributes.notebook.equipment_id', default: 'Identificação') %></th>
-      <th><%= t('activerecord.attributes.notebook.asset_number', default: 'Patrimônio') %></th>
-      <th><%= t('activerecord.attributes.notebook.state', default: 'Estado') %></th>
-      <th><%= t('notebooks.actions', default: 'Ações') %></th>
+    <tr style="background-color: #f2f2f2;">
+      <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">
+        <%=  'Identificação' %>
+      </th>
+      <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">
+        <%= 'Patrimônio' %>
+      </th>
+      <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">
+        <%= 'Estado' %>
+      </th>
+      <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">
+        <%= 'Ações' %>
+      </th>
     </tr>
   </thead>
   <tbody>
