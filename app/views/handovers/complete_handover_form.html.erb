@@ -1,0 +1,22 @@
+<h1>Finalizar Empréstimo</h1>
+<% if @handover.errors.any? %>
+  <ul>
+    <% @handover.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @handover, url: complete_handover_handover_path(@handover), method: :patch do |f| %>
+  <div>
+    <%= f.label :action, "Ação" %>
+    <%= f.select :action, [['Devolução', 'return'], ['Baixa', 'write_off']]%>
+  </div>
+
+  <div>
+    <%= f.label :cause, "Motivo" %>
+    <%= f.text_area :cause %>
+  </div>
+
+  <%= f.submit "Confirmar" %>
+<% end %>
