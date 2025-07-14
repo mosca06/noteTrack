@@ -50,6 +50,9 @@
     <%= form.text_area :description %>
   </div>
 
+  <%= form.file_field :pdf, accept: 'application/pdf' %>
+
+
   <% if action_name == 'edit' %>
     <div>
         <p>

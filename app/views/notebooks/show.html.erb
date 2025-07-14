@@ -9,7 +9,37 @@
 <p><strong>Data de fabricação:</strong> <%= @notebook.manufacture_date %></p>
 <p><strong>Descrição:</strong> <%= @notebook.description %></p>
 <p><strong>Estado:</strong> <%= @notebook.state %></p>
+<% if @notebook.pdf.attached? %>
+  <%= link_to "Visualizar PDF", url_for(@notebook.pdf), target: "_blank" %>
+<% else %>
+  <p>PDF não anexada.</p>
+<% end %>
 
 <%= link_to 'Voltar', notebooks_path %> |
 <%= link_to 'Editar', edit_notebook_path(@notebook) %> |
 <%= link_to 'Excluir',  notebook_path(@notebook), data: { turbo_method: :delete, turbo_confirm: 'Tem certeza?' } %>  
+
+<h2>Histórico de Estados</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data Início</th>
+      <th>Estado Inicial</th>
+      <th>Data Final</th>
+      <th>Estado Final</th>
+      <th>Informações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @handovers.each do |handover| %>
+      <tr>
+        <td><%= handover.start_date.strftime('%d/%m/%Y') %></td>
+        <td><%= handover.start_state.gsub(/^start_/, '').humanize %></td>
+        <td><%= handover.final_date.present? ? handover.final_date.strftime('%d/%m/%Y') : 'Em uso' %></td>
+        <td><%= handover.final_state.present? ? handover.final_state.gsub(/^final_/, '').humanize : 'Em uso' %></td>
+        <td><%= handover.cause.presence || '-' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

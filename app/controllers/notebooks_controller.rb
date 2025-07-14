@@ -16,7 +16,9 @@ class NotebooksController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @handovers = @notebook.handovers.order(start_date: :desc)
+  end
 
   def new
     @notebook = Notebook.new
@@ -62,6 +64,6 @@ class NotebooksController < ApplicationController
 
   def notebook_params
     params.require(:notebook).permit(:brand, :model, :asset_number, :serial_number, :equipment_id, :purchase_date,
-                                     :manufacture_date, :description)
+                                     :manufacture_date, :description, :pdf)
   end
 end
