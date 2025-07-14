@@ -17,7 +17,7 @@ class NotebooksController < ApplicationController
     @notebook = Notebook.new(notebook_params)
 
     if @notebook.save
-      redirect_to @notebook, notice: t('notebooks.created')
+      redirect_to @notebook, notice: 'Notebook cadastrado com sucesso.'
     else
       render :new
     end
@@ -25,7 +25,7 @@ class NotebooksController < ApplicationController
 
   def update
     if @notebook.update(notebook_params)
-      redirect_to @notebook, notice: t('notebooks.updated')
+      redirect_to @notebook, notice: 'Notebook atualizado com sucesso.'
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class NotebooksController < ApplicationController
 
   def destroy
     @notebook.destroy
-    redirect_to notebooks_path, notice: t('notebooks.deleted')
+    redirect_to notebooks_path, notice: 'Notebook excluído com sucesso.'
   end
 
   private
@@ -44,6 +44,6 @@ class NotebooksController < ApplicationController
 
   def notebook_params
     params.require(:notebook).permit(:brand, :model, :asset_number, :serial_number, :equipment_id, :purchase_date,
-                                     :manufacture_date, :description, :state)
+                                     :manufacture_date, :description)
   end
 end

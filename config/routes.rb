@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   get 'pages/index'
   resources :clients
   resources :notebooks
+  resources :handovers do
+    member do
+      get :complete_handover_form
+      patch :complete_handover
+    end
+  end
 
   # Health check
   get 'up' => 'rails/health#show', as: :rails_health_check

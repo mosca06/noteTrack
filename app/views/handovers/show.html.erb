@@ -1,0 +1,35 @@
+<h1>Empréstimo #<%= @handover.id %></h1>
+
+  <p><strong>Cliente:</strong> <%= @handover.client.name %></p>
+  <p><strong>Notebook:</strong> <%= @handover.notebook.brand %> - <%= @handover.notebook.model %></p>
+  <p><strong>Data do Empréstimo:</strong> <%= @handover.start_date.strftime('%d/%m/%Y %H:%M') if @handover.start_date %></p>
+
+  <p><strong>Status da Devolução:</strong> 
+    <% if @handover.returned? %>
+      <span style="color: green; font-weight: bold;">Devolvido</span>
+    <% else %>
+      <span style="color: red; font-weight: bold;">Em aberto</span>
+    <% end %>
+  </p>
+
+  <% if @handover.final_state.present? %>
+    <% estado_sem_prefixo = @handover.final_state.to_s.sub('final_', '') %>
+      <% cor = case estado_sem_prefixo
+              when 'disponível' then 'green'
+              when 'indisponível' then 'red'
+              else 'black'
+              end %>
+
+      <p>
+        <strong>Estado final:</strong> 
+        <span style="color:<%= cor %>; font-weight: bold;">
+          <%= estado_sem_prefixo.capitalize %>
+        </span>
+      </p>
+  <% end %>
+
+  <% unless @handover.returned? %>
+    <%= link_to 'Finalizar Empréstimo', complete_handover_form_handover_path(@handover), class: 'button' %>
+  <% end %>
+
+<%= link_to 'Voltar para lista', handovers_path %>

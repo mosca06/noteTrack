@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_13_202656) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_14_092624) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,20 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_13_202656) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "handovers", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "notebook_id", null: false
+    t.integer "start_state", null: false
+    t.integer "final_state"
+    t.datetime "start_date", null: false
+    t.datetime "final_date"
+    t.text "cause"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_handovers_on_client_id"
+    t.index ["notebook_id"], name: "index_handovers_on_notebook_id"
   end
 
   create_table "notebooks", force: :cascade do |t|
@@ -38,4 +52,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_13_202656) do
     t.index ["equipment_id"], name: "index_notebooks_on_equipment_id", unique: true
     t.index ["serial_number"], name: "index_notebooks_on_serial_number", unique: true
   end
+
+  add_foreign_key "handovers", "clients"
+  add_foreign_key "handovers", "notebooks"
 end

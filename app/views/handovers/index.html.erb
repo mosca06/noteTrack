@@ -1,0 +1,50 @@
+<h1>Lista de Empréstimos</h1>
+<%= link_to 'Novo Empréstimo', new_handover_path %>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Cliente</th>
+      <th>Notebook</th>
+      <th>Data do Empréstimo</th>
+      <th>Status</th> <!-- Devolvido ou Em aberto -->
+      <th>Estado Final</th> <!-- Disponível, Indisponível ou Aberto -->
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @handovers.each do |handover| %>
+      <tr>
+        <td><%= handover.id %></td>
+        <td><%= handover.client.name %></td>
+        <td><%= "#{handover.notebook.brand} - #{handover.notebook.model}" %></td>
+        <td><%= handover.start_date.strftime('%d/%m/%Y %H:%M') if handover.start_date %></td>
+        <td>
+          <% if handover.returned? %>
+            <span style="color: green; font-weight: bold;">Devolvido</span>
+          <% else %>
+            <span style="color: red; font-weight: bold;">Em aberto</span>
+          <% end %>
+        </td>
+        <td>
+          <% if handover.final_state.present? %>
+            <% estado = handover.final_state.to_s.sub('final_', '') %>
+            <% if estado == 'disponível' %>
+              <span style="color: green; font-weight: bold;">Disponível</span>
+            <% elsif estado == 'indisponível' %>
+              <span style="color: red; font-weight: bold;">Indisponível</span>
+            <% else %>
+              <span><%= estado.capitalize %></span>
+            <% end %>
+          <% else %>
+            <span style="color: gray;">Aberto</span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Ver', handover_path(handover) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

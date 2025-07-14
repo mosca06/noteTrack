@@ -52,12 +52,14 @@
 
   <% if action_name == 'edit' %>
     <div>
-      <%= form.label :state %>
-      <%= form.select :state, Notebook.states.keys.map { |s| [s.humanize, s] } %>
+        <p>
+          <strong>Estado do notebook:</strong><br>
+          <%= @notebook.state.humanize %>
+        </p>
     </div>
   <% end %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit if action_name == 'edit' ? 'Atualizar Notebook' : 'Criar Notebook' %>
   </div>
 <% end %>

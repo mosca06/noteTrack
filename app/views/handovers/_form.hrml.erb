@@ -1,0 +1,15 @@
+<%= form_with model: @handover, url: handovers_path do |f| %>
+  <div>
+    <%= f.label :client_id %><br>
+    <%= f.collection_select :client_id, @available_clients, :id, :name, prompt: 'Selecione o cliente' %>
+  </div>
+
+  <div>
+    <%= f.label :notebook_id %><br>
+    <%= f.collection_select :notebook_id, @available_notebooks, :id, :brand, prompt: 'Selecione o notebook' %>
+  </div>
+
+  <div>
+    <%= f.submit "Criar Empréstimo" %>
+  </div>
+<% end %>

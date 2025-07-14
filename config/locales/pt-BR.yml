@@ -1,13 +1,8 @@
 pt-BR:
-  notebooks:
-    created: "Notebook cadastrado com sucesso."
-    updated: "Notebook atualizado com sucesso."
-    deleted: "Notebook excluído com sucesso."
-    errors:
-      title: "%{count} erro(s) impediram o notebook de ser salvo:"
   activerecord:
     models:
       notebook: "Notebook"
+      client: "Cliente"
     attributes:
       notebook:
         equipment_id: "Identificação"
@@ -19,27 +14,9 @@ pt-BR:
         manufacture_date: "Data de fabricação"
         description: "Descrição"
         state: "Status"
-    errors:
-      models:
-        notebook:
-          attributes:
-            equipment_id:
-              blank: "não pode ficar em branco"
-              taken: "já está em uso"
-            brand:
-              blank: "não pode ficar em branco"
-            model:
-              blank: "não pode ficar em branco"
-            asset_number:
-              blank: "não pode ficar em branco"
-              taken: "já está em uso"
-            serial_number:
-              blank: "não pode ficar em branco"
-              taken: "já está em uso"
-            purchase_date:
-              blank: "não pode ficar em branco"
-            manufacture_date:
-              blank: "não pode ficar em branco"
+      client:
+        name: "Nome"
+        sector: "Setor"
   date:
     order:
       - :day
