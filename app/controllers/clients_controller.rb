@@ -3,7 +3,9 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
+    @q = params[:q]
     @clients = Client.all
+    @clients = @clients.where('name ILIKE :q OR sector ILIKE :q', q: "%#{@q}%") if @q.present?
   end
 
   # GET /clients/1 or /clients/1.json

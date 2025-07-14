@@ -1,8 +1,19 @@
 class NotebooksController < ApplicationController
   before_action :set_notebook, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def index # rubocop:disable Metrics/MethodLength
+    @q = params[:q]
     @notebooks = Notebook.all
+
+    if @q.present?
+      query = "%#{@q}%"
+      @notebooks = @notebooks
+                   .left_joins(:handovers)
+                   .where(
+                     'notebooks.asset_number ILIKE :q OR notebooks.serial_number ILIKE :q OR notebooks.model ILIKE :q OR CAST(notebooks.purchase_date AS TEXT) ILIKE :q OR CAST(notebooks.state AS TEXT) ILIKE :q', # rubocop:disable Layout/LineLength
+                     q: query
+                   ).distinct
+    end
   end
 
   def show; end
@@ -32,8 +43,15 @@ class NotebooksController < ApplicationController
   end
 
   def destroy
-    @notebook.destroy
-    redirect_to notebooks_path, notice: 'Notebook excluído com sucesso.'
+    @notebook = Notebook.find(params[:id])
+
+    if @notebook.pode_ser_excluido?
+      @notebook.destroy
+      redirect_to notebooks_path, notice: 'Notebook excluído com sucesso.'
+    else
+      redirect_to notebooks_path,
+                  alert: 'Não é possível excluir este notebook: ele já foi emprestado ou não está disponível.'
+    end
   end
 
   private

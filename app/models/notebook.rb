@@ -9,6 +9,10 @@ class Notebook < ApplicationRecord
 
   after_initialize :set_default_status, if: :new_record?
 
+  def pode_ser_excluido?
+    disponível? && handovers.empty?
+  end
+
   private
 
   def set_default_status

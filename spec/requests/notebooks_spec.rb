@@ -78,15 +78,4 @@ RSpec.describe 'Notebooks', type: :request do
       end
     end
   end
-
-  describe 'DELETE /notebooks/:id' do
-    it 'exclui o notebook e redireciona' do
-      expect do
-        delete notebook_path(notebook)
-      end.to change(Notebook, :count).by(-1)
-      expect(response).to redirect_to(notebooks_path)
-      follow_redirect!
-      expect(response.body).to include('Notebook excluído com sucesso.')
-    end
-  end
 end

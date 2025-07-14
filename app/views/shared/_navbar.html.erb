@@ -1,0 +1,18 @@
+<nav>
+  <div class="logo">
+    <%= link_to "Note Track", root_path, style: "color: white; text-decoration: none; font-weight: bold;" %>
+  </div>
+
+  <div class="nav-links">
+    <%= link_to "Clientes", clients_path %>
+    <%= link_to "Notebooks", notebooks_path %>
+    <%= link_to "Empréstimos", handovers_path %>
+  </div>
+
+  <div class="search-form">
+    <%= form_with url: request.path, method: :get, local: true do %>
+      <%= text_field_tag :q, params[:q], placeholder: "Buscar...", class: "p-1 rounded" %>
+      <%= submit_tag "Buscar", class: "ml-1 p-1" %>
+    <% end %>
+  </div>
+</nav>

@@ -73,14 +73,7 @@
 
   <body>
     <nav>
-      <div class="logo">
-        <%= link_to "Note Track", root_path, style: "color: white; text-decoration: none; font-weight: bold;" %>
-      </div>
-      <div class="nav-links">
-        <%= link_to "Clientes", clients_path %>
-        <%= link_to "Notebooks", notebooks_path %>
-        <%= link_to "Emprestimos", handovers_path %>
-      </div>
+      <%= render "shared/navbar" %>
     </nav>
 
     <% flash.each do |key, message| %>
