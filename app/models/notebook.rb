@@ -1,6 +1,7 @@
 class Notebook < ApplicationRecord
   enum :state, { disponível: 0, emprestado: 1, indisponível: 2 }
 
+  has_one_attached :pdf
   has_many :handovers, dependent: :nullify
   has_many :clients, through: :handovers
 
